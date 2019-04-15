@@ -8,83 +8,110 @@
 
 import UIKit
 
-//class Foo {
-//
-//    var n: Int
-//
-//    init(n: Int) {
-//        self.n = n
-//        print("Foo created: \(n)")
-//    }
-//    deinit {
-//        print("Foo gone")
-//    }
-//}
-//
-//class Bar: Foo {
-//    override init(n: Int) {
-//        print("Bar created: \(n)")
-//    }
-//    //Is not overwritten here
-//    deinit {
-//        print("Bar gone")
-//    }
-//}
+let totle = 2500
 
-class DispatchQueuViewController: UIViewController {
-
+class DispatchQueuViewController: UIViewController
+{
+    var sum = 0
+    let q1 = DispatchQueue.init(label: "Q1")
+    let q2 = DispatchQueue.init(label: "Q1")
+    let q3 = DispatchQueue.init(label: "Q1")
+    let q4 = DispatchQueue.init(label: "Q1")
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+//        tryAsync()
+//        trySync()
+//        tryAsync2()
+        appCodaAsync()
+    }
+    
+    func appCodaAsync()//弄不出來你一言我一語啊
+    {
+        let q1 = DispatchQueue(label: "1A", qos: .userInteractive, attributes: .concurrent)
+        let q2 = DispatchQueue(label: "2B", qos: .userInteractive, attributes: .concurrent)
         
-        let q1 = DispatchQueue.init(label: "Q1")
-        let q2 = DispatchQueue.init(label: "Q1")
-        let q3 = DispatchQueue.init(label: "Q1")
-        let q4 = DispatchQueue.init(label: "Q1")
-        
-        var sum = 0
-        
-        func add()
-        {
-            sum += 1
+        q1.async {
+            for i in 0 ..< totle
+            {
+                print("\(i)❤️")
+            }
         }
         
-        for _ in 0..<25//0
+        q2.async {
+            for i in 0 ..< totle
+            {
+                print("\(i)💜")
+            }
+        }
+    }
+    
+    func tryAsync()
+    {
+        for _ in 0 ..< totle
         {
             q1.async {
-                add()
-                print("🧡\(sum)")
+                self.add(heart: "🧡")
             }
             q2.async {
-                add()
-                print("💛\(sum)")
+                self.add(heart: "💛")
             }
             q3.async {
-                add()
-                print("💚\(sum)")
+                self.add(heart: "💚")
             }
             q4.async {
-                add()
-                print("💙\(sum)")
+                self.add(heart: "💙")
             }
-            
-//            q1.sync {
-//                add()
-//                print("🧡\(sum)")
-//            }
-//            q2.sync {
-//                add()
-//                print("💛\(sum)")
-//            }
-//            q3.sync {
-//                add()
-//                print("💚\(sum)")
-//            }
-//            q4.sync {
-//                add()
-//                print("💙\(sum)")
-//            }
         }
-        print(sum)
+    }
+    
+    func tryAsync2()
+    {
+        q1.async {
+            for _ in 0 ..< totle{
+                self.add(heart: "🧡")
+            }
+        }
+        q2.async {
+            for _ in 0 ..< totle{
+                self.add(heart: "💛")
+            }
+        }
+        q3.async {
+            for _ in 0 ..< totle{
+                self.add(heart: "💚")
+            }
+        }
+        q4.async {
+            for _ in 0 ..< totle{
+                self.add(heart: "💙")
+            }
+        }
+    }
+    
+    func trySync()
+    {
+        for _ in 0 ..< totle
+        {
+            q1.sync {
+                self.add(heart: "🧡")
+            }
+            q2.sync {
+                self.add(heart: "💛")
+            }
+            q3.sync {
+                self.add(heart: "💚")
+            }
+            q4.sync {
+                self.add(heart: "💙")
+            }
+        }
+    }
+    
+    func add(heart: String)
+    {
+        sum += 1
+        print("\(heart)\(self.sum)")
     }
 }
