@@ -20,20 +20,32 @@ class OperationViewController: UIViewController
         let op1 = BlockOperation.init {
 //            self.queue.isSuspended = true
             //下面還是會跑完
-            NSLog("1來也~~~~")
-            printIsReady()
+//            NSLog("1來也~~~~")
+//            printIsReady()
+            for _ in 0 ... 100
+            {
+                print("📕")
+            }
         }
         //雖然op2依賴op1, 但不用等completionBlock跑完
 //        op1.completionBlock = {
 //            self.queue.isSuspended = true
 //        }
         let op2 = BlockOperation.init {
-            NSLog("2來也~~~~")
-            printIsReady()
+//            NSLog("2來也~~~~")
+//            printIsReady()
+            for _ in 0 ... 100
+            {
+                print("📗")
+            }
         }
         let op3 = BlockOperation.init {
-            NSLog("3來也~~~~")
-            printIsReady()
+//            NSLog("3來也~~~~")
+//            printIsReady()
+            for _ in 0 ... 100
+            {
+                print("📘")
+            }
         }
         //隊列已空
 //        op3.completionBlock = {
@@ -42,9 +54,9 @@ class OperationViewController: UIViewController
         
         operations = [op1,op2,op3]
         //優先度...好像沒什麼用
-//        op3.queuePriority = .veryHigh
-//        op2.queuePriority = .normal
-//        op1.queuePriority = .veryLow
+        op3.queuePriority = .veryHigh
+        op2.queuePriority = .normal
+        op1.queuePriority = .veryLow
         //相依
 //        op2.addDependency(op1)
 //        op3.addDependency(op2)
@@ -54,8 +66,8 @@ class OperationViewController: UIViewController
 //        print(op3.dependencies)
         
         //死鎖2(但不會閃退, 只是都不跑)
-        op2.addDependency(op1)
-        op1.addDependency(op2)
+//        op2.addDependency(op1)
+//        op1.addDependency(op2)
         
         queue.addOperations(operations, waitUntilFinished: false)
         

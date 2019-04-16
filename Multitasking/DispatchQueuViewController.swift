@@ -21,28 +21,51 @@ class DispatchQueuViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        tryAsync()
 //        trySync()
-//        tryAsync2()
-        appCodaAsync()
+        trySync2()
+//        tryAsync()
+//        appCodaAsync()
     }
     
-    func appCodaAsync()//弄不出來你一言我一語啊
+    func trySync()
     {
-        let q1 = DispatchQueue(label: "1A", qos: .userInteractive, attributes: .concurrent)
-        let q2 = DispatchQueue(label: "2B", qos: .userInteractive, attributes: .concurrent)
-        
-        q1.async {
-            for i in 0 ..< totle
-            {
-                print("\(i)❤️")
+        for _ in 0 ..< totle
+        {
+            q1.sync {
+                self.add(heart: "🧡")
+            }
+            q2.sync {
+                self.add(heart: "💛")
+            }
+            q3.sync {
+                self.add(heart: "💚")
+            }
+            q4.sync {
+                self.add(heart: "💙")
             }
         }
-        
-        q2.async {
-            for i in 0 ..< totle
-            {
-                print("\(i)💜")
+    }
+    
+    func trySync2()
+    {
+        q1.sync {
+            for _ in 0 ..< totle{
+                self.add(heart: "🧡")
+            }
+        }
+        q2.sync {
+            for _ in 0 ..< totle{
+                self.add(heart: "💛")
+            }
+        }
+        q3.sync {
+            for _ in 0 ..< totle{
+                self.add(heart: "💚")
+            }
+        }
+        q4.sync {
+            for _ in 0 ..< totle{
+                self.add(heart: "💙")
             }
         }
     }
@@ -66,45 +89,22 @@ class DispatchQueuViewController: UIViewController
         }
     }
     
-    func tryAsync2()
+    func appCodaAsync()//弄不出來你一言我一語啊
     {
+        let q1 = DispatchQueue(label: "1A", qos: .userInteractive, attributes: .concurrent)
+        let q2 = DispatchQueue(label: "2B", qos: .userInteractive, attributes: .concurrent)
+        
         q1.async {
-            for _ in 0 ..< totle{
-                self.add(heart: "🧡")
+            for i in 0 ..< totle
+            {
+                print("\(i)❤️")
             }
         }
+        
         q2.async {
-            for _ in 0 ..< totle{
-                self.add(heart: "💛")
-            }
-        }
-        q3.async {
-            for _ in 0 ..< totle{
-                self.add(heart: "💚")
-            }
-        }
-        q4.async {
-            for _ in 0 ..< totle{
-                self.add(heart: "💙")
-            }
-        }
-    }
-    
-    func trySync()
-    {
-        for _ in 0 ..< totle
-        {
-            q1.sync {
-                self.add(heart: "🧡")
-            }
-            q2.sync {
-                self.add(heart: "💛")
-            }
-            q3.sync {
-                self.add(heart: "💚")
-            }
-            q4.sync {
-                self.add(heart: "💙")
+            for i in 0 ..< totle
+            {
+                print("\(i)💜")
             }
         }
     }
