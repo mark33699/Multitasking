@@ -14,6 +14,7 @@
 		0D37835422608D1A0088A537 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D37835222608D1A0088A537 /* LaunchScreen.storyboard */; };
 		0D37835C22608D620088A537 /* DispatchQueuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D37835B22608D620088A537 /* DispatchQueuViewController.swift */; };
 		0D37835E22644AAC0088A537 /* OperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D37835D22644AAC0088A537 /* OperationViewController.swift */; };
+		0D516DEE22656DC200499BD9 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D516DED22656DC200499BD9 /* IssueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0D37835522608D1A0088A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D37835B22608D620088A537 /* DispatchQueuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueuViewController.swift; sourceTree = "<group>"; };
 		0D37835D22644AAC0088A537 /* OperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationViewController.swift; sourceTree = "<group>"; };
+		0D516DED22656DC200499BD9 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				0D37835522608D1A0088A537 /* Info.plist */,
 				0D37835B22608D620088A537 /* DispatchQueuViewController.swift */,
 				0D37835D22644AAC0088A537 /* OperationViewController.swift */,
+				0D516DED22656DC200499BD9 /* IssueViewController.swift */,
 			);
 			path = Multitasking;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D516DEE22656DC200499BD9 /* IssueViewController.swift in Sources */,
 				0D37835E22644AAC0088A537 /* OperationViewController.swift in Sources */,
 				0D37834C22608D160088A537 /* ViewController.swift in Sources */,
 				0D37834A22608D160088A537 /* AppDelegate.swift in Sources */,
